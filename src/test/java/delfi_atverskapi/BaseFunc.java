@@ -5,8 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.util.List;
 
@@ -32,17 +31,16 @@ public class BaseFunc {
         return browser.findElement(locator);
     }
 
-    public List<WebElement> getElements(By locator) {
-        Assertions.assertFalse(browser.findElements(locator).isEmpty(), "There are no elements");
-        return browser.findElements(locator);
-
-    }
 
     public void fillField(By locator,String name) {
 
         getElement(locator).sendKeys(name);
     }
 
+    public void timeForUserToCompleteCaptcha() throws InterruptedException {
+        long start = System.currentTimeMillis();
+        Thread.sleep(120000);
+    }
 
 
 }
